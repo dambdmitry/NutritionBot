@@ -1,18 +1,31 @@
 package mitin.backend.system;
 
-import mitin.backend.system.diet.DietSystemImpl;
-import mitin.backend.system.diet.model.diet.DietType;
-import mitin.backend.system.model.Response;
 import mitin.backend.system.user.model.User;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserSystem {
-    Response signUp(User user);
 
-    User getUser(String login);
+    boolean hasUserChat(Long chatId);
 
-    DietSystemImpl createMenu(String userLogin, DietType menuType);
+    User startRegistry(Long chatId);
 
-    List<DietSystemImpl> getUserDiets(String userLogin);
+    List<String> getUnregisterParameters(Long chatId);
+
+    void setUserActivity(Long chatId, int activity);
+
+    void setUserAge(Long chatId, int age);
+
+    void setUserHeight(Long chatId, int height);
+
+    void setUserWeight(Long chatId, int weight);
+
+    void setUserGender(Long chatId, String usrParamValue);
+
+    void removeUser(Long chatId);
+
+    Map<String, String> getUserParameters(Long chatId);
+
+
 }

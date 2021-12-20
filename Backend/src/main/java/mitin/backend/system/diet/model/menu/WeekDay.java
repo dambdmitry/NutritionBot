@@ -1,5 +1,7 @@
 package mitin.backend.system.diet.model.menu;
 
+import java.util.List;
+
 public enum WeekDay {
     MONDAY("Понедельник"),
     TUESDAY("Вторник"),
@@ -12,6 +14,10 @@ public enum WeekDay {
     String name;
     private WeekDay(String day){
         name = day;
+    }
+
+    public static List<WeekDay> getWeek(){
+        return List.of(MONDAY, WEDNESDAY, TUESDAY , FRIDAY, THURSDAY, SATURDAY, SUNDAY);
     }
 
     @Override

@@ -1,61 +1,46 @@
 package mitin.backend.system.diet.model.nutrition;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Nutrition {
     private String name;
-    private String description;
-    private List<Ingredient> ingredients;
-    private Recipe recipe;
-
+    private String type;
+    private List<String> ingredients;
+    private List<String> recipe;
     private Integer calories;
-    private Integer proteins;
-    private Integer fats;
-    private Integer carbohydrates;
+    private String path;
+    private Nutrition secondNutrition;
 
     private File picture;//todo
 
-    public Nutrition(String name){
-        ingredients = new LinkedList<>();
-        recipe = new Recipe();
+    public String getPath() {
+        return path;
+    }
+
+    public Nutrition getSecondNutrition() {
+        return secondNutrition;
+    }
+
+    public void setSecondNutrition(Nutrition secondNutrition) {
+        this.secondNutrition = secondNutrition;
+    }
+
+    public Nutrition(String name, String type, Integer calories, List<String> ingredients, List<String> recipe, String path) {
         this.name = name;
-    }
-
-    public Nutrition(String name, String description, Integer calories, Integer proteins, Integer fats, Integer carbohydrates) {
-        this.name = name;
-        this.description = description;
+        this.type = type;
         this.calories = calories;
-        this.proteins = proteins;
-        this.fats = fats;
-        this.carbohydrates = carbohydrates;
+        this.ingredients = ingredients;
+        this.recipe = recipe;
+        this.path = path;
+        this.secondNutrition = null;
     }
 
-    public void addStepForCook(String actionDescription){
-        recipe.addStep(new Step(actionDescription));
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setCalories(Integer calories) {
-        this.calories = calories;
-    }
-
-    public void setProteins(Integer proteins) {
-        this.proteins = proteins;
-    }
-
-    public void setFats(Integer fats) {
-        this.fats = fats;
-    }
-
-    public void setCarbohydrates(Integer carbohydrates) {
-        this.carbohydrates = carbohydrates;
-    }
 
     public void setPicture(File picture) {
         this.picture = picture;
@@ -65,19 +50,19 @@ public class Nutrition {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public List<Ingredient> getIngredients() {
-        return ingredients;
+    public String getType() {
+        return type;
     }
 
     public String getRecipePresentation() {
         return recipe.toString();
     }
 
-    public Recipe getRecipe(){
+    public List<String> getIngredients() {
+        return ingredients;
+    }
+
+    public List<String> getRecipe() {
         return recipe;
     }
 
@@ -85,19 +70,47 @@ public class Nutrition {
         return calories;
     }
 
-    public Integer getProteins() {
-        return proteins;
-    }
-
-    public Integer getFats() {
-        return fats;
-    }
-
-    public Integer getCarbohydrates() {
-        return carbohydrates;
-    }
-
     public File getPicture() {
         return picture;
+    }
+
+    public Integer allCalories(){
+        if(secondNutrition != null){
+            return secondNutrition.getCalories() + calories;
+        }
+        return calories;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Nutrition that = (Nutrition) o;
+
+        if(name.equals(that.name)){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode(){
+        return name.hashCode();
+    }
+
+    @Override
+    public String toString(){
+        String ing = ingredients.stream().collect(Collectors.joining("\n\t\t-"));
+        String rec = recipe.stream().collect(Collectors.joining("\n\t\t-"));
+        StringBuilder result = new StringBuilder();
+        result.append(name).append("\n")
+                .append("Калорийность: ").append(calories).append("\n")
+                .append("Ингридиенты:\n\t\t-").append(ing).append("\n")
+                .append("Рецепт:\n\t\t-").append(rec);
+        if (secondNutrition != null) {
+            result.append("\nВторое блюдо:\n").append(secondNutrition);
+        }
+        return result.toString();
     }
 }

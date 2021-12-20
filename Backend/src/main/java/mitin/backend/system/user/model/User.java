@@ -1,32 +1,25 @@
 package mitin.backend.system.user.model;
 
-import mitin.backend.system.user.model.Gender;
-
 public class User {
-    private String login;
-    private String name;
+    private Long chatId;
     private Gender sex;
     private Integer weight;
     private Integer height;
     private Integer age;
     private Integer activity;
 
-    public User(String login, String name, Gender sex, Integer weight, Integer height, Integer age, Integer activity) {
-        this.login = login;
-        this.name = name;
-        this.sex = sex;
-        this.weight = weight;
-        this.height = height;
-        this.age = age;
-        this.activity = activity;
+
+    public User(Long chatId) {
+        this.chatId = chatId;
+        this.sex = null;
+        this.weight = null;
+        this.height = null;
+        this.age = null;
+        this.activity = null;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public String getName() {
-        return name;
+    public Long getChatId() {
+        return chatId;
     }
 
     public Gender getSex() {
@@ -47,5 +40,25 @@ public class User {
 
     public Integer getActivity() {
         return activity;
+    }
+
+    public void setSex(Gender sex) {
+        this.sex = sex;
+    }
+
+    public void setWeight(Integer weight) {
+        this.weight = weight;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setActivity(Integer activity) {
+        this.activity = activity;
     }
 }

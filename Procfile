@@ -1,0 +1,1 @@
+bot: java -XX:+UseContainerSupport -Dfile.encoding=UTF-8 -jar Frontend/target/Frontend-1.0-SNAPSHOT.jar
