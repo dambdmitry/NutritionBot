@@ -125,18 +125,18 @@ public class DietEngineImpl implements DietEngine {
                 .max(Comparator.comparing(Nutrition::getCalories));
     }
 
-    public static void main(String[] args) {
-        //Menu menu = new DietEngineImpl().createMenu(4000, DietType.NORMAL);
-        //System.out.println(menu);
-
-        for (int i = 1500; i <= 4000; i++){
-            Menu menu = new DietEngineImpl().createMenu(i, DietType.NORMAL);
-            List<Integer> collect = menu.getMeals().stream().map(Nutrition::allCalories).collect(Collectors.toList());
-            Integer result = 0;
-            for (Integer cal : collect){
-                result += cal;
-            }
-            System.out.println("Для i = " + i + " норма на неделю = " + result);
-        }
-    }
+//    public static void main(String[] args) {
+//        //Menu menu = new DietEngineImpl().createMenu(4000, DietType.NORMAL);
+//        //System.out.println(menu);
+//
+//        for (int i = 1500; i <= 4000; i++){
+//            Menu menu = new DietEngineImpl().createMenu(i, DietType.NORMAL);
+//            List<Integer> collect = menu.getMeals().stream().map(Nutrition::allCalories).collect(Collectors.toList());
+//            Integer result = 0;
+//            for (Integer cal : collect){
+//                result += cal;
+//            }
+//            System.out.println("Для i = " + i + " норма на неделю = " + result);
+//        }
+//    }
 }
