@@ -4,7 +4,7 @@ import mitin.backend.system.diet.model.diet.DietType;
 import mitin.backend.system.diet.model.menu.day.MealPlanForTheDay;
 import mitin.backend.system.diet.model.menu.day.WeekDay;
 import mitin.backend.system.diet.model.menu.day.time.Ingestion;
-import mitin.backend.system.diet.model.nutrition.Nutrition;
+import mitin.backend.system.diet.model.menu.day.time.nutrition.Nutrition;
 
 import java.util.*;
 import java.util.stream.Collectors;

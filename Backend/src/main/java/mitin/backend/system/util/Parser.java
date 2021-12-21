@@ -1,6 +1,6 @@
 package mitin.backend.system.util;
 
-import mitin.backend.system.diet.model.nutrition.Nutrition;
+import mitin.backend.system.diet.model.menu.day.time.nutrition.Nutrition;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

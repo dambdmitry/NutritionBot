@@ -1,6 +1,6 @@
 package mitin.backend.system.diet.model.menu.day.time;
 
-import mitin.backend.system.diet.model.nutrition.Nutrition;
+import mitin.backend.system.diet.model.menu.day.time.nutrition.Nutrition;
 
 public class Ingestion {
     private MealTime mealTime;
@@ -16,10 +16,6 @@ public class Ingestion {
 
     public Nutrition getNutrition() {
         return nutrition;
-    }
-
-    public void setMealTime(MealTime mealTime) {
-        this.mealTime = mealTime;
     }
 
     public void setNutrition(Nutrition nutrition) {

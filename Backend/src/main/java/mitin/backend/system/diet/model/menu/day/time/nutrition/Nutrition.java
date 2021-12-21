@@ -1,4 +1,4 @@
-package mitin.backend.system.diet.model.nutrition;
+package mitin.backend.system.diet.model.menu.day.time.nutrition;
 
 import java.util.List;
 import java.util.stream.Collectors;

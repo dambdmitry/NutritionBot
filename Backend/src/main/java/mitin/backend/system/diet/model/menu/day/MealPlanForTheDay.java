@@ -2,7 +2,7 @@ package mitin.backend.system.diet.model.menu.day;
 
 import mitin.backend.system.diet.model.menu.day.time.Ingestion;
 import mitin.backend.system.diet.model.menu.day.time.MealTime;
-import mitin.backend.system.diet.model.nutrition.Nutrition;
+import mitin.backend.system.diet.model.menu.day.time.nutrition.Nutrition;
 
 import java.util.LinkedList;
 import java.util.List;

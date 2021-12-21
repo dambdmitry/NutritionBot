@@ -1,7 +1,7 @@
 package mitin.backend.system.diet.engine.impl;
 
 import mitin.backend.system.util.Parser;
-import mitin.backend.system.diet.model.nutrition.Nutrition;
+import mitin.backend.system.diet.model.menu.day.time.nutrition.Nutrition;
 
 import java.util.List;
 
