@@ -14,7 +14,7 @@ import mitin.frontend.telegram.engine.diets.DietService;
 import mitin.frontend.telegram.BotEngine;
 import mitin.frontend.telegram.engine.api.BotApi;
 import mitin.frontend.telegram.exception.CommandNotFoundException;
-import mitin.frontend.telegram.engine.users.TelegramUser;
+import mitin.frontend.telegram.engine.users.storage.TelegramUser;
 import mitin.frontend.telegram.engine.users.UserService;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;

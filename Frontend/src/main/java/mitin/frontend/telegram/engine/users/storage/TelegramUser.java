@@ -1,4 +1,4 @@
-package mitin.frontend.telegram.engine.users;
+package mitin.frontend.telegram.engine.users.storage;
 
 import mitin.backend.system.diet.model.diet.DietType;
 import mitin.backend.system.user.model.User;

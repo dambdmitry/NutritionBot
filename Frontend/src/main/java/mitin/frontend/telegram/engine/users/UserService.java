@@ -3,6 +3,7 @@ package mitin.frontend.telegram.engine.users;
 import mitin.backend.system.UserSystem;
 import mitin.backend.system.user.UserSystemImpl;
 import mitin.frontend.telegram.constant.user.UserParameters;
+import mitin.frontend.telegram.engine.users.storage.TelegramUser;
 
 import java.util.*;
 
