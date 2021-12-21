@@ -14,13 +14,14 @@ import java.util.List;
 
 public abstract class BotApi {
 
+    //Создать текстовое сообщение
     public static SendMessage createSendMessage(Long chatId, String text) {
         return SendMessage.builder()
                 .chatId(chatId.toString())
                 .text(text)
                 .build();
     }
-
+    //Создать маркированное текстовое сообщение
     public static SendMessage createMarkdownSendMessage(Long chatId, String text) {
         return SendMessage.builder()
                 .chatId(chatId.toString())
@@ -28,7 +29,7 @@ public abstract class BotApi {
                 .parseMode("Markdown")
                 .build();
     }
-
+    //Создать сообщение с картинкой
     public static SendPhoto createSendMessageWithPicture(Long chatId, String path) {
         SendPhoto photo = SendPhoto
                 .builder()
@@ -36,8 +37,9 @@ public abstract class BotApi {
                 .photo(new InputFile(new java.io.File(path))).build();
         return photo;
     }
-
-    public static SendMessage createSendMessageWithKeyboard(Long chatId, String text, List<KeyboardRow> keyboard, ReplyKeyboardMarkup keyboardMarkup) {
+    //Создать сообщение с клавиатурой
+    public static SendMessage createSendMessageWithKeyboard(Long chatId, String text, List<KeyboardRow> keyboard,
+                                                            ReplyKeyboardMarkup keyboardMarkup) {
         keyboardMarkup.setKeyboard(keyboard);
         return SendMessage.builder()
                 .chatId(chatId.toString())
@@ -45,9 +47,7 @@ public abstract class BotApi {
                 .text(text)
                 .build();
     }
-
-    ;
-
+    //Создать сообщение с callback клавиатурой
     public static SendMessage createSendMessageWithReplyKeyboard(Long chatId, String text, InlineKeyboardMarkup keyboard) {
         return SendMessage.builder()
                 .chatId(chatId.toString())

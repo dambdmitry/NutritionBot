@@ -1,6 +1,6 @@
 package mitin.frontend.telegram;
 
-import mitin.frontend.telegram.constant.bot.Constant;
+import mitin.frontend.telegram.constant.bot.Credentials;
 import mitin.frontend.telegram.engine.Engine;
 import mitin.frontend.telegram.engine.UnregisteredUserCommand;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -19,12 +19,12 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return Constant.botName;
+        return Credentials.botName;
     }
 
     @Override
     public String getBotToken() {
-        return Constant.botToken;
+        return Credentials.botToken;
     }
 
     @Override
@@ -44,8 +44,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     }
 
     private void handleCallback(CallbackQuery callbackQuery) {
-        SendMessage response = null;
-        response = bot.executeCallback(callbackQuery);
+        SendMessage response = bot.executeCallback(callbackQuery);
         try {
             execute(response);
         } catch (TelegramApiException e) {
