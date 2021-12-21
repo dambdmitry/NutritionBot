@@ -3,6 +3,9 @@ package mitin.backend.system.diet.engine.impl;
 import mitin.backend.system.diet.engine.DietEngine;
 import mitin.backend.system.diet.model.diet.DietType;
 import mitin.backend.system.diet.model.menu.*;
+import mitin.backend.system.diet.model.menu.day.MealPlanForTheDay;
+import mitin.backend.system.diet.model.menu.day.WeekDay;
+import mitin.backend.system.diet.model.menu.day.time.MealTime;
 import mitin.backend.system.diet.model.nutrition.Nutrition;
 
 import java.util.Comparator;
@@ -24,7 +27,7 @@ public class DietEngineImpl implements DietEngine {
 
     @Override
     public Menu createMenu(Integer dailyCalorie, DietType dietType) {
-        List<Nutrition> nutritions = new AllNutritions().getNutritions();
+        List<Nutrition> nutritions = new NutritionStorage().getNutritions();
         List<WeekDay> week = WeekDay.getWeek();
         Menu menu = new Menu(dietType);
         Integer range = 0;

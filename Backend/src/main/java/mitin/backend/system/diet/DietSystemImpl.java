@@ -4,74 +4,18 @@ import mitin.backend.system.DietSystem;
 import mitin.backend.system.diet.engine.DietEngine;
 import mitin.backend.system.diet.engine.impl.DietEngineImpl;
 import mitin.backend.system.diet.model.diet.DietType;
-import mitin.backend.system.diet.model.menu.MealPlanForTheDay;
+import mitin.backend.system.diet.model.menu.day.MealPlanForTheDay;
 import mitin.backend.system.diet.model.menu.Menu;
-import mitin.backend.system.diet.model.menu.WeekDay;
+import mitin.backend.system.diet.model.menu.day.WeekDay;
 import mitin.backend.system.user.UserSystemImpl;
-import mitin.backend.system.user.model.Gender;
 
 import java.util.*;
 
 public class DietSystemImpl implements DietSystem {
-
     private static DietSystem dietSystem;
     private DietEngine dietEngine;
-
     private Map<Long, Menus> diets;
 
-    class Menus {
-        TypedMenu normal;
-        TypedMenu gain;
-        TypedMenu loss;
-
-        public Menus() {
-        }
-
-        public TypedMenu getMenu(DietType type) {
-            if (type == DietType.NORMAL) {
-                return normal;
-            } else if (type == DietType.WEIGHT_GAIN) {
-                return gain;
-            } else {
-                return loss;
-            }
-        }
-
-        public void setMenu(TypedMenu typedMenu) {
-            DietType type = typedMenu.typeMenu;
-            if (type == DietType.NORMAL) {
-                normal = typedMenu;
-            } else if (type == DietType.WEIGHT_GAIN) {
-                gain = typedMenu;
-            } else {
-                loss = typedMenu;
-            }
-        }
-
-        public TypedMenu getNormal() {
-            return normal;
-        }
-
-        public void setNormal(TypedMenu normal) {
-            this.normal = normal;
-        }
-
-        public TypedMenu getGain() {
-            return gain;
-        }
-
-        public void setGain(TypedMenu gain) {
-            this.gain = gain;
-        }
-
-        public TypedMenu getLoss() {
-            return loss;
-        }
-
-        public void setLoss(TypedMenu loss) {
-            this.loss = loss;
-        }
-    }
 
     private DietSystemImpl() {
         diets = new HashMap<>();
@@ -96,11 +40,9 @@ public class DietSystemImpl implements DietSystem {
         boolean hasUserMenu = diets.containsKey(chatId);
         TypedMenu typedMenu = new TypedMenu(dietType, menu);
         if (hasUserMenu) {
-            //diets.computeIfAbsent(chatId, k -> new ArrayList<>()).add(typedMenu);
             Menus typedMenus = diets.get(chatId);
             typedMenus.setMenu(typedMenu);
         } else {
-            //diets.put(chatId, List.of(typedMenu));
             Menus menus = new Menus();
             menus.setMenu(typedMenu);
             diets.put(chatId, menus);
@@ -130,13 +72,11 @@ public class DietSystemImpl implements DietSystem {
     @Override
     public Integer getDailyCalorie(Long chatId) {
         Map<String, String> userParameters = UserSystemImpl.createUserSystem().getUserParameters(chatId);
-        Integer activity = Integer.parseInt(userParameters.get("Активность"));
-        Integer weight = Integer.parseInt(userParameters.get("Вес"));
-        Integer height = Integer.parseInt(userParameters.get("Рост"));
-        Integer age = Integer.parseInt(userParameters.get("Возраст"));
-        int act = (1 + activity / 10);
+        int activity = Integer.parseInt(userParameters.get("Активность"));
+        int weight = Integer.parseInt(userParameters.get("Вес"));
+        int height = Integer.parseInt(userParameters.get("Рост"));
+        int age = Integer.parseInt(userParameters.get("Возраст"));
         String sex = userParameters.get("Пол");
-        Gender gender;
         double dailyCalorie;
         if (sex.equals("Мужской")) {
             dailyCalorie = (10 * weight + 6.25 * height - 5 * age + 5) * (1 + activity / 10.0);
@@ -159,6 +99,36 @@ public class DietSystemImpl implements DietSystem {
         Menus menus = diets.get(chatId);
         TypedMenu typedMenu = menus.getMenu(type);
         return typedMenu.getMenu().getDayPlan(day);
+    }
+
+    class Menus {
+        TypedMenu normal;
+        TypedMenu gain;
+        TypedMenu loss;
+
+        public Menus() {
+        }
+
+        public TypedMenu getMenu(DietType type) {
+            if (type == DietType.NORMAL) {
+                return normal;
+            } else if (type == DietType.WEIGHT_GAIN) {
+                return gain;
+            } else {
+                return loss;
+            }
+        }
+
+        public void setMenu(TypedMenu typedMenu) {
+            DietType type = typedMenu.typeMenu;
+            if (type == DietType.NORMAL) {
+                normal = typedMenu;
+            } else if (type == DietType.WEIGHT_GAIN) {
+                gain = typedMenu;
+            } else {
+                loss = typedMenu;
+            }
+        }
     }
 
     class TypedMenu {
@@ -186,14 +156,6 @@ public class DietSystemImpl implements DietSystem {
         public TypedMenu(DietType typeMenu, Menu menu) {
             this.typeMenu = typeMenu;
             this.menu = menu;
-        }
-
-        public DietType getTypeMenu() {
-            return typeMenu;
-        }
-
-        public void setTypeMenu(DietType typeMenu) {
-            this.typeMenu = typeMenu;
         }
 
         public Menu getMenu() {

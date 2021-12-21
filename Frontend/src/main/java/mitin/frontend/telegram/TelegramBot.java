@@ -1,10 +1,8 @@
 package mitin.frontend.telegram;
 
-import mitin.frontend.telegram.constant.Constant;
-import mitin.frontend.telegram.engine.BotEngine;
-import mitin.frontend.telegram.engine.implementation.Engine;
-import mitin.frontend.telegram.engine.implementation.UnregisteredUserCommand;
-import mitin.frontend.telegram.engine.implementation.factory.BotApi;
+import mitin.frontend.telegram.constant.bot.Constant;
+import mitin.frontend.telegram.engine.Engine;
+import mitin.frontend.telegram.engine.UnregisteredUserCommand;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;

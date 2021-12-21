@@ -12,7 +12,6 @@ public class UserSystemImpl implements UserSystem {
 
     private static UserSystemImpl userSystem = null;
 
-
     private UserSystemImpl() {
         users = new LinkedList<>();
     }
@@ -28,12 +27,12 @@ public class UserSystemImpl implements UserSystem {
 
 
     @Override
-    public boolean hasUserChat(Long chatId) {
+    public boolean hasUser(Long chatId) {
         return getUser(chatId).isPresent();
     }
 
     @Override
-    public User startRegistry(Long chatId) {
+    public User createUser(Long chatId) {
         User user = new User(chatId);
         users.add(user);
         return user;

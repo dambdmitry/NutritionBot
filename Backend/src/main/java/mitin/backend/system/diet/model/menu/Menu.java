@@ -1,6 +1,9 @@
 package mitin.backend.system.diet.model.menu;
 
 import mitin.backend.system.diet.model.diet.DietType;
+import mitin.backend.system.diet.model.menu.day.MealPlanForTheDay;
+import mitin.backend.system.diet.model.menu.day.WeekDay;
+import mitin.backend.system.diet.model.menu.day.time.Ingestion;
 import mitin.backend.system.diet.model.nutrition.Nutrition;
 
 import java.util.*;
