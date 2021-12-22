@@ -29,13 +29,9 @@ public interface UserSystem {
      * Методы установки параметра сущности User
      */
     void setUserActivity(Long chatId, int activity);
-
     void setUserAge(Long chatId, int age);
-
     void setUserHeight(Long chatId, int height);
-
     void setUserWeight(Long chatId, int weight);
-
     void setUserGender(Long chatId, String usrParamValue);
 
     /**

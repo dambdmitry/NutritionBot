@@ -24,10 +24,6 @@ public class MealPlanForTheDay {
                 .ifPresent(ingestion1 -> ingestion1.setNutrition(nutrition));
     }
 
-    public boolean isMenuFull(){
-        return mealPlan.stream().noneMatch(ingestion -> ingestion.getNutrition() == null);
-    }
-
     private void initPlan(){
         mealPlan = new LinkedList<>();
         mealPlan.add(new Ingestion(MealTime.BREAKFAST));

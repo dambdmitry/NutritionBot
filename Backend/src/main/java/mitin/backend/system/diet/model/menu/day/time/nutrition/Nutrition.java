@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Nutrition {
-    private String name;
-    private String type;
-    private List<String> ingredients;
-    private List<String> recipe;
-    private Integer calories;
-    private String path;
+    private final String name;
+    private final String type;
+    private final List<String> ingredients;
+    private final List<String> recipe;
+    private final Integer calories;
+    private final String path;
     private Nutrition secondNutrition;
 
     public Nutrition(String name, String type, Integer calories, List<String> ingredients, List<String> recipe, String path) {
@@ -52,10 +52,7 @@ public class Nutrition {
 
         Nutrition that = (Nutrition) o;
 
-        if (name.equals(that.name)) {
-            return true;
-        }
-        return false;
+        return name.equals(that.name);
     }
 
     @Override

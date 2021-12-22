@@ -7,15 +7,15 @@ import java.util.List;
 
 public class NutritionStorage {
 
-    List<Nutrition> nutritions;
+    private List<Nutrition> nutrition;
     private final String PATH = "Backend/src/main/resources/menu/nutritions.json";
 
     public NutritionStorage() {
-        nutritions = Parser.getNutritions(PATH);
+        nutrition = Parser.getNutritions(PATH);
     }
 
     public List<Nutrition> getNutritions() {
-        return nutritions;
+        return nutrition;
     }
 
 }

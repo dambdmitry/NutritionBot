@@ -94,7 +94,7 @@ public class UserSystemImpl implements UserSystem {
             } else if (usrParamValue.equals("Женский")) {
                 gender = Gender.FEMALE;
             }
-            user.get().setSex(gender);
+            user.get().setGender(gender);
         } else {
             throw new RuntimeException("Такого юзера нет");
         }
@@ -114,7 +114,7 @@ public class UserSystemImpl implements UserSystem {
                     "Вес", user.getWeight().toString(),
                     "Рост", user.getHeight().toString(),
                     "Возраст", user.getAge().toString(),
-                    "Пол", user.getSex().toString());
+                    "Пол", user.getGender().toString());
         }
         throw new RuntimeException("Такого юзера нет");
     }
@@ -133,7 +133,7 @@ public class UserSystemImpl implements UserSystem {
         if (user.getWeight() == null) {
             nullParameters.add("Вес");
         }
-        if (user.getSex() == null) {
+        if (user.getGender() == null) {
             nullParameters.add("Пол");
         }
 

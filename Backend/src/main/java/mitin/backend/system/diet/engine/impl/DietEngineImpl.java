@@ -103,11 +103,6 @@ public class DietEngineImpl implements DietEngine {
         plan.setIngestion(MealTime.SUPPER, eveningMeal);
         plan.setIngestion(MealTime.FIRST_SNACK, firstSnack);
         plan.setIngestion(MealTime.SECOND_SNACK, secondSnack);
-
-
-//        System.out.println(eveningMeal.getCalories() + dinner.getCalories() + breakfast.getCalories()
-//                + firstSnack.getCalories() + secondSnack.getCalories()+ "\n\n");
-
         return plan;
     }
 
@@ -125,18 +120,4 @@ public class DietEngineImpl implements DietEngine {
                 .max(Comparator.comparing(Nutrition::getCalories));
     }
 
-//    public static void main(String[] args) {
-//        //Menu menu = new DietEngineImpl().createMenu(4000, DietType.NORMAL);
-//        //System.out.println(menu);
-//
-//        for (int i = 1500; i <= 4000; i++){
-//            Menu menu = new DietEngineImpl().createMenu(i, DietType.NORMAL);
-//            List<Integer> collect = menu.getMeals().stream().map(Nutrition::allCalories).collect(Collectors.toList());
-//            Integer result = 0;
-//            for (Integer cal : collect){
-//                result += cal;
-//            }
-//            System.out.println("Для i = " + i + " норма на неделю = " + result);
-//        }
-//    }
 }

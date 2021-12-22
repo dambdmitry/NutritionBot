@@ -1,8 +1,8 @@
 package mitin.backend.system.user.model;
 
 public class User {
-    private Long chatId;
-    private Gender sex;
+    private final Long chatId;
+    private Gender gender;
     private Integer weight;
     private Integer height;
     private Integer age;
@@ -11,7 +11,7 @@ public class User {
 
     public User(Long chatId) {
         this.chatId = chatId;
-        this.sex = null;
+        this.gender = null;
         this.weight = null;
         this.height = null;
         this.age = null;
@@ -22,8 +22,8 @@ public class User {
         return chatId;
     }
 
-    public Gender getSex() {
-        return sex;
+    public Gender getGender() {
+        return gender;
     }
 
     public Integer getWeight() {
@@ -42,8 +42,8 @@ public class User {
         return activity;
     }
 
-    public void setSex(Gender sex) {
-        this.sex = sex;
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public void setWeight(Integer weight) {
